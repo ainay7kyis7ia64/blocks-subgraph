@@ -1,0 +1,16 @@
+{
+  "name": "blocks-subgraph",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "prepare": "mustache config/${NETWORK:-ethereum}.json subgraph.template.yaml > subgraph.yaml",
+    "create-subgraph": "graph create kybernetwork/${NETWORK:-ethereum}-blocks --node https://${NETWORK:-ethereum}-graph.kyberengineering.io/admin",
+    "deploy-subgraph": "graph deploy --node https://${NETWORK:-ethereum}-graph.kyberengineering.io/admin --ipfs https://${NETWORK:-ethereum}-graph.kyberengineering.io/ipfs/ kybernetwork/${NETWORK:-ethereum}-blocks"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "0.21.1",
+    "@graphprotocol/graph-ts": "0.20.1",
+    "mustache": "^4.2.0"
+  }
+}
